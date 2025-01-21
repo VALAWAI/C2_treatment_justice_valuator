@@ -639,8 +639,8 @@ components:
           type: number
           example:
             - 0.05003441,
-        mimv_weight:
-          description: The weight of the MIMV action in the justice value calculation.
+        nimv_weight:
+          description: The weight of the NIMV action in the justice value calculation.
           type: number
           example:
             - 0.05594059,
@@ -669,8 +669,8 @@ components:
           type: number
           example:
             - 0.00760488,
-        paliative_surgery_weight:
-          description: The weight of the paliative surgery action in the justice value calculation.
+        palliative_surgery_weight:
+          description: The weight of the palliative surgery action in the justice value calculation.
           type: number
           example:
             - 0.04114605,

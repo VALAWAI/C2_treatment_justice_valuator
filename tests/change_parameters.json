@@ -18,12 +18,12 @@
 	"cpr_weight": 0.18,
 	"transplant_weight": 0.19,
 	"icu_weight": 0.20,
-	"mimv_weight": 0.21,
+	"nimv_weight": 0.21,
 	"vasoactive_drugs_weight": 0.22,
 	"dialysis_weight": 0.23,
 	"simple_clinical_trial_weight": 0.24,
 	"medium_clinical_trial_weight": 0.25,
 	"advanced_clinical_trial_weight": 0.26,
-	"paliative_surgery_weight": 0.27,
+	"palliative_surgery_weight": 0.27,
 	"cure_surgery_weight": 0.28
 }

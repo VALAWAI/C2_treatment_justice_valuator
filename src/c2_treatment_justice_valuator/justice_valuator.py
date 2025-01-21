@@ -46,13 +46,13 @@ class JusticeValuator:
 		cpr_weight:float = float(os.getenv('CPR_WEIGHT',"0.00130002")),
 		transplant_weight:float = float(os.getenv('TRANSPLANT_WEIGHT',"0.05353632")),
 		icu_weight:float = float(os.getenv('ICU_WEIGHT',"0.05003441")),
-		mimv_weight:float = float(os.getenv('MIMV_WEIGHT',"0.05594059")),
+		nimv_weight:float = float(os.getenv('NIMV_WEIGHT',"0.05594059")),
 		vasoactive_drugs_weight:float = float(os.getenv('VASOACTIVE_DRUGS_WEIGHT',"0.06292382")),
 		dialysis_weight:float = float(os.getenv('DIALYSIS_WEIGHT',"0.0513848")),
 		simple_clinical_trial_weight:float = float(os.getenv('SIMPLE_CLINICAL_TRIAL_WEIGHT',"0.02967249")),
 		medium_clinical_trial_weight:float = float(os.getenv('MEDIUM_CLINICAL_TRIAL_WEIGHT',"0.05018696")),
 		advanced_clinical_trial_weight:float = float(os.getenv('ADVANCED_CLINICAL_TRIAL_WEIGHT',"0.00760488")),
-		paliative_surgery_weight:float = float(os.getenv('PALIATIVE_SURGERY_WEIGHT',"0.04114605")),
+		palliative_surgery_weight:float = float(os.getenv('PALLIATIVE_SURGERY_WEIGHT',"0.04114605")),
 		cure_surgery_weight:float = float(os.getenv('CURE_SURGERY_WEIGHT',"0.00921742"))
 		):
 		"""Initialize the justice valuator
@@ -97,8 +97,8 @@ class JusticeValuator:
 			The importance of the transplant action when calculate the justice value.
 		icu_weight: :float
 			The importance of the ICU action when calculate the justice value.
-		mimv_weight: :float
-			The importance of the MIMV action when calculate the justice value.
+		nimv_weight: :float
+			The importance of the NIMV action when calculate the justice value.
 		vasoactive_drugs_weight: :float
 			The importance of the vasoactive drugs action when calculate the justice value.
 		dialysis_weight: :float
@@ -109,8 +109,8 @@ class JusticeValuator:
 			The importance of the medium clinical trial action when calculate the justice value.
 		advanced_clinical_trial_weight: :float
 			The importance of the advanced clinical trial action when calculate the justice value.
-		paliative_surgery_weight: :float
-			The importance of the paliative surgery action when calculate the justice value.
+		palliative_surgery_weight: :float
+			The importance of the palliative surgery action when calculate the justice value.
 		cure_surgery_weight: :float
 			The importance of the cure surgery action when calculate the justice value.
 		"""
@@ -130,17 +130,17 @@ class JusticeValuator:
 		self.has_cognitive_impairment_weight = has_cognitive_impairment_weight
 		self.has_emocional_pain_weight = has_emocional_pain_weight
 		self.discomfort_degree_weight = discomfort_degree_weight
-		self.cpr_weigh = cpr_weigh
-		self.transplant_weigh = transplant_weigh
-		self.icu_weigh = icu_weigh
-		self.mimv_weigh = mimv_weigh
-		self.vasoactive_drugs_weigh = vasoactive_drugs_weigh
-		self.dialysis_weigh = dialysis_weigh
-		self.simple_clinical_trial_weigh = simple_clinical_trial_weigh
-		self.medium_clinical_trial_weigh = medium_clinical_trial_weigh
-		self.advanced_clinical_trial_weigh = advanced_clinical_trial_weigh
-		self.paliative_surgery_weigh = paliative_surgery_weigh
-		self.cure_surgery_weigh = cure_surgery_weigh
+		self.cpr_weight = cpr_weight
+		self.transplant_weight = transplant_weight
+		self.icu_weight = icu_weight
+		self.nimv_weight = nimv_weight
+		self.vasoactive_drugs_weight = vasoactive_drugs_weight
+		self.dialysis_weight = dialysis_weight
+		self.simple_clinical_trial_weight = simple_clinical_trial_weight
+		self.medium_clinical_trial_weight = medium_clinical_trial_weight
+		self.advanced_clinical_trial_weight = advanced_clinical_trial_weight
+		self.palliative_surgery_weight = palliative_surgery_weight
+		self.cure_surgery_weight = cure_surgery_weight
 
 
 	def align_justice(self,treatment:TreatmentPayload):
@@ -175,39 +175,39 @@ class JusticeValuator:
 		alignment += self.has_cognitive_impairment_weight * treatment.before_status.normalized_has_cognitive_impairment()
 		alignment += self.has_emocional_pain_weight * treatment.before_status.normalized_has_emocional_pain()
 		alignment += self.discomfort_degree_weight * treatment.before_status.normalized_discomfort_degree()
-
+		
 		if TreatmentAction.CPR in treatment.actions:
-			alignment += self.cpr_weigh
+			alignment += self.cpr_weight
 			
 		if TreatmentAction.TRANSPLANT in treatment.actions:
-			alignment += self.transplant_weigh
+			alignment += self.transplant_weight
 			
 		if TreatmentAction.ICU in treatment.actions:
-			alignment += self.icu_weigh
+			alignment += self.icu_weight
 			
-		if TreatmentAction.MIMV in treatment.actions:
-			alignment += self.mimv_weigh
+		if TreatmentAction.NIMV in treatment.actions:
+			alignment += self.nimv_weight
 		
 		if TreatmentAction.VASOACTIVE_DRUGS in treatment.actions:
-			alignment += self.vasoactive_drugs_weigh
+			alignment += self.vasoactive_drugs_weight
 			
 		if TreatmentAction.DIALYSIS in treatment.actions:
-			alignment += self.dialysis_weigh
+			alignment += self.dialysis_weight
 			
 		if TreatmentAction.SIMPLE_CLINICAL_TRIAL in treatment.actions:
-			alignment += self.simple_clinical_trial_weigh
+			alignment += self.simple_clinical_trial_weight
 			
 		if TreatmentAction.MEDIUM_CLINICAL_TRIAL in treatment.actions:
-			alignment += self.medium_clinical_trial_weigh
+			alignment += self.medium_clinical_trial_weight
 			
 		if TreatmentAction.ADVANCED_CLINICAL_TRIAL in treatment.actions:
-			alignment += self.advanced_clinical_trial_weigh
+			alignment += self.advanced_clinical_trial_weight
 			
-		if TreatmentAction.PALIATIVE_SURGERY in treatment.actions:
+		if TreatmentAction.PALLIATIVE_SURGERY in treatment.actions:
 			
-			alignment += self.paliative_surgery_weigh
+			alignment += self.palliative_surgery_weight
 			
 		if TreatmentAction.CURE_SURGERY in treatment.actions:
-			alignment += self.cure_surgery_weigh
+			alignment += self.cure_surgery_weight
 
 		return alignment

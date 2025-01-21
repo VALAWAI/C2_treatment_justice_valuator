@@ -45,7 +45,18 @@ PROPERTY_NAME_PARAMETERS = [
 		param("is_coerced_weight"),
 		param("has_cognitive_impairment_weight"),
 		param("has_emocional_pain_weight"),
-		param("discomfort_degree_weight")
+		param("discomfort_degree_weight"),
+		param("cpr_weight"),
+		param("transplant_weight"),
+		param("icu_weight"),
+		param("nimv_weight"),
+		param("vasoactive_drugs_weight"),
+		param("dialysis_weight"),
+		param("simple_clinical_trial_weight"),
+		param("medium_clinical_trial_weight"),
+		param("advanced_clinical_trial_weight"),
+		param("palliative_surgery_weight"),
+		param("cure_surgery_weight")
 	]
 
 class TestChangeParametersHandler(ParametrizedTestCase):
@@ -117,7 +128,18 @@ class TestChangeParametersHandler(ParametrizedTestCase):
 				"is_coerced_weight": self.random_weight(),
 				"has_cognitive_impairment_weight": self.random_weight(),
 				"has_emocional_pain_weight": self.random_weight(),
-				"discomfort_degree_weight": self.random_weight()
+				"discomfort_degree_weight": self.random_weight(),
+				"cpr_weight": self.random_weight(),
+				"transplant_weight": self.random_weight(),
+				"icu_weight": self.random_weight(),
+				"nimv_weight": self.random_weight(),
+				"vasoactive_drugs_weight": self.random_weight(),
+				"dialysis_weight": self.random_weight(),
+				"simple_clinical_trial_weight": self.random_weight(),
+				"medium_clinical_trial_weight": self.random_weight(),
+				"advanced_clinical_trial_weight": self.random_weight(),
+				"palliative_surgery_weight": self.random_weight(),
+				"cure_surgery_weight": self.random_weight()
 			}
 		self.__assert_process_change_parameters('INFO', parameters)
 		for param_name in parameters:

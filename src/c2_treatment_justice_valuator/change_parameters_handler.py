@@ -72,7 +72,18 @@ class ChangeParametersHandler:
 				self.__update_weight(parameters.has_cognitive_impairment_weight,"HAS_COGNITIVE_IMPAIRMENT_WEIGHT")
 				self.__update_weight(parameters.has_emocional_pain_weight,"HAS_EMOCIONAL_PAIN_WEIGHT")
 				self.__update_weight(parameters.discomfort_degree_weight,"DISCOMFORT_DEGREE_WEIGHT")
-
+				self.__update_weight(parameters.cpr_weight,"CPR_WEIGHT")
+				self.__update_weight(parameters.transplant_weight,"TRANSPLANT_WEIGHT")
+				self.__update_weight(parameters.icu_weight,"ICU_WEIGHT")
+				self.__update_weight(parameters.nimv_weight,"NIMV_WEIGHT")
+				self.__update_weight(parameters.vasoactive_drugs_weight,"VASOACTIVE_DRUGS_WEIGHT")
+				self.__update_weight(parameters.dialysis_weight,"DIALYSIS_WEIGHT")
+				self.__update_weight(parameters.simple_clinical_trial_weight,"SIMPLE_CLINICAL_TRIAL_WEIGHT")
+				self.__update_weight(parameters.medium_clinical_trial_weight,"MEDIUM_CLINICAL_TRIAL_WEIGHT")
+				self.__update_weight(parameters.advanced_clinical_trial_weight,"ADVANCED_CLINICAL_TRIAL_WEIGHT")
+				self.__update_weight(parameters.palliative_surgery_weight,"PALLIATIVE_SURGERY_WEIGHT")
+				self.__update_weight(parameters.cure_surgery_weight,"CURE_SURGERY_WEIGHT")
+				
 				self.mov.info("Changed the component parameters",json_dict)
 
 			except ValueError as validation_error:

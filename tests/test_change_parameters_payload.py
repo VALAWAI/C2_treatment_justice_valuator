@@ -54,13 +54,13 @@ class TestChangeParametersPayload(unittest.TestCase):
 		assert math.isclose(change_parameters.cpr_weight, 0.18)
 		assert math.isclose(change_parameters.transplant_weight, 0.19)
 		assert math.isclose(change_parameters.icu_weight, 0.20)
-		assert math.isclose(change_parameters.mimv_weight, 0.21)
+		assert math.isclose(change_parameters.nimv_weight, 0.21)
 		assert math.isclose(change_parameters.vasoactive_drugs_weight, 0.22)
 		assert math.isclose(change_parameters.dialysis_weight, 0.23)
 		assert math.isclose(change_parameters.simple_clinical_trial_weight, 0.24)
 		assert math.isclose(change_parameters.medium_clinical_trial_weight, 0.25)
 		assert math.isclose(change_parameters.advanced_clinical_trial_weight, 0.26)
-		assert math.isclose(change_parameters.paliative_surgery_weight, 0.27)
+		assert math.isclose(change_parameters.palliative_surgery_weight, 0.27)
 		assert math.isclose(change_parameters.cure_surgery_weight, 0.28)
 
 	def test_allow_define_empty_change_parameters(self):

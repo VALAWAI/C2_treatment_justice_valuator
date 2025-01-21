@@ -18,12 +18,11 @@
 
 import math
 import unittest
-
+import random
 from json_resources import load_treatment_json
-
 from c2_treatment_justice_valuator.justice_valuator import JusticeValuator
 from c2_treatment_justice_valuator.patient_status_criteria import PatientStatusCriteria
-from c2_treatment_justice_valuator.treatment_payload import TreatmentPayload
+from c2_treatment_justice_valuator.treatment_payload import TreatmentPayload,TreatmentAction
 
 
 class TestJusticeValuator(unittest.TestCase):
@@ -31,8 +30,8 @@ class TestJusticeValuator(unittest.TestCase):
 	"""
 
 	def setUp(self):
-		"""Create the valuator.
-		"""
+		"""Create the valuator."""
+		
 		self.valuator = JusticeValuator(
 				age_range_weight=0.03528796,
 				ccd_weight=0.0459857,
@@ -53,42 +52,47 @@ class TestJusticeValuator(unittest.TestCase):
 				cpr_weight=0.00130002,
 				transplant_weight=0.05353632,
 				icu_weight=0.05003441,
-				mimv_weight=0.05594059,
+				nimv_weight=0.05594059,
 				vasoactive_drugs_weight=0.06292382,
 				dialysis_weight=0.0513848,
 				simple_clinical_trial_weight=0.02967249,
 				medium_clinical_trial_weight=0.05018696,
 				advanced_clinical_trial_weight=0.00760488,
-				paliative_surgery_weight=0.04114605,
+				palliative_surgery_weight=0.04114605,
 				cure_surgery_weight=0.00921742
 			)
 
 
 	def test_align_justice(self):
-		"""Test calculate alignment for a treatment
-		"""
+		"""Test calculate alignment for a treatment"""
 
 		treatment = TreatmentPayload(**load_treatment_json())
 		alignment = self.valuator.align_justice(treatment)
 		assert math.isclose(alignment, 0.3092993), 'Unexpected treatment justice alignment value'
 
-	def test_align_justice_for_treatment_without_expected_status(self):
-		"""Test calculate alignment with an empty treatment
-		"""
+
+	def test_align_justice_for_treatment_with_empty_before_status(self):
+		"""Test calculate alignment with empty before status treatment"""
 
 		treatment = TreatmentPayload(**load_treatment_json())
-		treatment.expected_status = None
+		treatment.before_status = PatientStatusCriteria()
+		treatment.actions = [TreatmentAction.CPR] 
 		alignment = self.valuator.align_justice(treatment)
-		assert math.isclose(alignment, 0.0), 'Unexpected treatment justice alignment value'
+		assert math.isclose(alignment, 0.00130002), 'Unexpected treatment justice alignment value'
 
-	def test_align_justice_for_treatment_with_empty_expected_status(self):
-		"""Test calculate alignment with an empty treatment
-		"""
+	def test_align_justice_for_treatment_with_empty_before_status_and_all_actions(self):
+		"""Test calculate alignment with an empty treatment"""
 
 		treatment = TreatmentPayload(**load_treatment_json())
-		treatment.expected_status = PatientStatusCriteria()
+		treatment.before_status = PatientStatusCriteria()
+		treatment.actions = []
+		for action in TreatmentAction:
+			
+			treatment.actions.append(action)
+			
+		random.shuffle(treatment.actions)
 		alignment = self.valuator.align_justice(treatment)
-		assert math.isclose(alignment, -0.4551), 'Unexpected treatment justice alignment value'
+		assert math.isclose(alignment, 0.41294776), 'Unexpected treatment justice alignment value'
 
 if __name__ == '__main__':
     unittest.main()

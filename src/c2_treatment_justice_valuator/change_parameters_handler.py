@@ -83,7 +83,7 @@ class ChangeParametersHandler:
 				self.__update_weight(parameters.advanced_clinical_trial_weight,"ADVANCED_CLINICAL_TRIAL_WEIGHT")
 				self.__update_weight(parameters.palliative_surgery_weight,"PALLIATIVE_SURGERY_WEIGHT")
 				self.__update_weight(parameters.cure_surgery_weight,"CURE_SURGERY_WEIGHT")
-				
+
 				self.mov.info("Changed the component parameters",json_dict)
 
 			except ValueError as validation_error:

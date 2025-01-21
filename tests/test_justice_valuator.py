@@ -17,12 +17,14 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 import math
-import unittest
 import random
+import unittest
+
 from json_resources import load_treatment_json
+
 from c2_treatment_justice_valuator.justice_valuator import JusticeValuator
 from c2_treatment_justice_valuator.patient_status_criteria import PatientStatusCriteria
-from c2_treatment_justice_valuator.treatment_payload import TreatmentPayload,TreatmentAction
+from c2_treatment_justice_valuator.treatment_payload import TreatmentAction, TreatmentPayload
 
 
 class TestJusticeValuator(unittest.TestCase):
@@ -31,7 +33,7 @@ class TestJusticeValuator(unittest.TestCase):
 
 	def setUp(self):
 		"""Create the valuator."""
-		
+
 		self.valuator = JusticeValuator(
 				age_range_weight=0.03528796,
 				ccd_weight=0.0459857,
@@ -76,7 +78,7 @@ class TestJusticeValuator(unittest.TestCase):
 
 		treatment = TreatmentPayload(**load_treatment_json())
 		treatment.before_status = PatientStatusCriteria()
-		treatment.actions = [TreatmentAction.CPR] 
+		treatment.actions = [TreatmentAction.CPR]
 		alignment = self.valuator.align_justice(treatment)
 		assert math.isclose(alignment, 0.00130002), 'Unexpected treatment justice alignment value'
 
@@ -87,9 +89,9 @@ class TestJusticeValuator(unittest.TestCase):
 		treatment.before_status = PatientStatusCriteria()
 		treatment.actions = []
 		for action in TreatmentAction:
-			
+
 			treatment.actions.append(action)
-			
+
 		random.shuffle(treatment.actions)
 		alignment = self.valuator.align_justice(treatment)
 		assert math.isclose(alignment, 0.41294776), 'Unexpected treatment justice alignment value'

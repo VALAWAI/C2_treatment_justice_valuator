@@ -30,9 +30,9 @@ from mov_api import mov_get_log_message_with
 
 from c2_treatment_justice_valuator.message_service import MessageService
 from c2_treatment_justice_valuator.mov import MOV
-from c2_treatment_justice_valuator.received_treatment_handler import ReceivedTreatmentHandler
-from c2_treatment_justice_valuator.treatment_payload import TreatmentPayload
 from c2_treatment_justice_valuator.patient_status_criteria import PatientStatusCriteria
+from c2_treatment_justice_valuator.received_treatment_handler import ReceivedTreatmentHandler
+from c2_treatment_justice_valuator.treatment_payload import TreatmentAction, TreatmentPayload
 
 
 class TestReceivedTreatmentHandler(unittest.TestCase):
@@ -107,7 +107,7 @@ class TestReceivedTreatmentHandler(unittest.TestCase):
 
 		treatment = TreatmentPayload(**load_treatment_json())
 		treatment.before_status = PatientStatusCriteria()
-		treatment.actions = [TreatmentAction.CPR] 
+		treatment.actions = [TreatmentAction.CPR]
 		self.__assert_evaluate_treatment(treatment,0.00130002)
 
 	def test_not_evaluate_treatment_without_id(self):

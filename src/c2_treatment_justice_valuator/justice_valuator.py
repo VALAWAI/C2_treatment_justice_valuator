@@ -19,7 +19,7 @@
 
 import os
 
-from treatment_payload import TreatmentPayload, TreatmentAction
+from treatment_payload import TreatmentAction, TreatmentPayload
 
 
 class JusticeValuator:
@@ -175,38 +175,38 @@ class JusticeValuator:
 		alignment += self.has_cognitive_impairment_weight * treatment.before_status.normalized_has_cognitive_impairment()
 		alignment += self.has_emocional_pain_weight * treatment.before_status.normalized_has_emocional_pain()
 		alignment += self.discomfort_degree_weight * treatment.before_status.normalized_discomfort_degree()
-		
+
 		if TreatmentAction.CPR in treatment.actions:
 			alignment += self.cpr_weight
-			
+
 		if TreatmentAction.TRANSPLANT in treatment.actions:
 			alignment += self.transplant_weight
-			
+
 		if TreatmentAction.ICU in treatment.actions:
 			alignment += self.icu_weight
-			
+
 		if TreatmentAction.NIMV in treatment.actions:
 			alignment += self.nimv_weight
-		
+
 		if TreatmentAction.VASOACTIVE_DRUGS in treatment.actions:
 			alignment += self.vasoactive_drugs_weight
-			
+
 		if TreatmentAction.DIALYSIS in treatment.actions:
 			alignment += self.dialysis_weight
-			
+
 		if TreatmentAction.SIMPLE_CLINICAL_TRIAL in treatment.actions:
 			alignment += self.simple_clinical_trial_weight
-			
+
 		if TreatmentAction.MEDIUM_CLINICAL_TRIAL in treatment.actions:
 			alignment += self.medium_clinical_trial_weight
-			
+
 		if TreatmentAction.ADVANCED_CLINICAL_TRIAL in treatment.actions:
 			alignment += self.advanced_clinical_trial_weight
-			
+
 		if TreatmentAction.PALLIATIVE_SURGERY in treatment.actions:
-			
+
 			alignment += self.palliative_surgery_weight
-			
+
 		if TreatmentAction.CURE_SURGERY in treatment.actions:
 			alignment += self.cure_surgery_weight
 

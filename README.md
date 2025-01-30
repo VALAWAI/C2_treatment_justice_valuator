@@ -6,7 +6,7 @@ a patient follows the justice_value.
 ## Summary
 
  - Type: C2
- - Name: Treament justice valuator
+ - Name: Treatment justice valuator
  - Version: 1.0.0 (January 21, 2025)
  - API: [1.0.0 (January 21, 2025)](https://raw.githubusercontent.com/VALAWAI/C2_treatment_justice_valuator/ASYNCAPI_1.0.0/asyncapi.yml)
  - VALAWAI API: [1.2.0 (March 9, 2024)](https://raw.githubusercontent.com/valawai/MOV/ASYNCAPI_1.2.0/asyncapi.yml)
@@ -332,7 +332,7 @@ be changed for secure deployments in production environments.
 
 ## Links
 
- - [C2 Treament justice valuator documentation](https://valawai.github.io/docs/components/C2/treatment_justice_valuator)
+ - [C2 Treatment justice valuator documentation](https://valawai.github.io/docs/components/C2/treatment_justice_valuator)
  - [Master Of VALAWAI tutorial](https://valawai.github.io/docs/tutorials/mov)
  - [VALWAI documentation](https://valawai.github.io/docs/)
  - [VALAWAI project web site](https://valawai.eu/)

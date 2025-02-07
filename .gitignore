@@ -174,3 +174,4 @@ cython_debug/
 
 logs/
 .c2_treatment_justice_valuator-docker-cache/
+/.ruff_cache/

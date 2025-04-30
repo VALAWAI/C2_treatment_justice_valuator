@@ -144,7 +144,7 @@ class JusticeValuator:
 
 
 	def align_justice(self,treatment:TreatmentPayload):
-		"""Calculate the alignemnt of a treatemnt with the justice value.
+		"""Calculate the alignment of a treatemnt with the justice value.
 
 		Parameters
 		----------
